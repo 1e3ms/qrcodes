@@ -1,0 +1,13 @@
+<p>qrcodes works!</p>
+
+<form>
+    <label for="qrcode-url">URL:</label>
+    <input id="qrcode-url" type="text" [formControl]=qrcodeURL />
+    <button type="button" (click)=submitURL()>Generate</button>
+</form>
+
+<p>invalid: {{qrcodeURL.invalid}}</p>
+
+<canvas id="qrcode-container"></canvas>
+
+<div id="konva-container"></div>
