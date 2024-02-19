@@ -1,13 +1,24 @@
-<p>qrcodes works!</p>
-
 <form>
-    <label for="qrcode-url">URL:</label>
-    <input id="qrcode-url" type="text" [formControl]=qrcodeURL />
-    <button type="button" (click)=submitURL()>Generate</button>
+  <div class="flex flex-row gap-2">
+    <label for="qrcode-url" class="grow input input-bordered flex items-center gap-2"
+           [class.input-error]="invalidURL === true" [class.input-success]="invalidURL
+    === false && submitted">
+      <fa-icon icon="link"></fa-icon>
+      <input type="text" class="grow" placeholder="https://" id="qrcode-url" [formControl]="qrcodeURL" required />
+    </label>
+    <button type="button" (click)=submitURL() [disabled]="qrcodeURL.invalid" class="btn">Generate</button>
+  </div>
+  <p *ngIf="error === undefined && submitted" class="text-success text-sm">
+    Valid URL
+  </p>
+  <div *ngIf="error !== undefined" class="text-error flex flex-row gap-1 text-sm
+  font-bold">
+    <span>Error:</span>
+    <p *ngIf="error.notFound === true">URL destination not found</p>
+    <p *ngIf="error.invalidURL === true">Invalid URL</p>
+    <p *ngIf="error.notSecureURL === true">Provided URL is not secure (https)</p>
+  </div>
 </form>
 
-<p>invalid: {{qrcodeURL.invalid}}</p>
-
-<canvas id="qrcode-container"></canvas>
 
 <div id="konva-container"></div>
