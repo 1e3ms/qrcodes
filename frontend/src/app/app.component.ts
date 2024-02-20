@@ -4,6 +4,7 @@ import { QrcodesComponent } from './qrcodes/qrcodes.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'onesec-root',
@@ -14,6 +15,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 })
 export class AppComponent {
   constructor(library: FaIconLibrary) {
-    library.addIconPacks(fas, far);
+    library.addIconPacks(fas, far, fab);
   }
 }
