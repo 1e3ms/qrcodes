@@ -6,6 +6,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeValue } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import downloadjs from 'downloadjs';
 
 type CheckURLResponse = {
   accessible?: boolean;
@@ -42,6 +43,9 @@ export class QrcodesComponent {
   public error?: QRCodeError;
   public invalidURL?: boolean;
   public submitted: boolean = false;
+  public hasQRCode: boolean = false;
+
+  private qrCodeStage?: Konva.Stage;
 
   public constructor(
     private http: HttpClient,
@@ -85,7 +89,7 @@ export class QrcodesComponent {
   }
 
   private generateKonva(url: string) {
-    const stage = new Konva.Stage({
+    this.qrCodeStage = new Konva.Stage({
       container: 'konva-container',
       width: 400,
       height: 400
@@ -117,6 +121,15 @@ export class QrcodesComponent {
 
     layer.add(rect);
     layer.add(img);
-    stage.add(layer);
+    this.qrCodeStage.add(layer);
+    this.hasQRCode = true;
+  }
+
+  public downloadQRCode() {
+    if (this.qrCodeStage === undefined) {
+      return;
+    }
+    const dataURL = this.qrCodeStage.toDataURL({ pixelRatio: 3 });
+    downloadjs(dataURL, 'qrcode.png');
   }
 }

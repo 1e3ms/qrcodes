@@ -21,6 +21,11 @@
 </form>
 
 
-<div class="max-w-3xl flex flex-col items-center pt-4">
+<div class="max-w-3xl flex flex-col items-center mt-4">
   <div id="konva-container"></div>
+
+  <button class="btn btn-outline btn-success mt-4 btn-sm" *ngIf="hasQRCode" (click)="downloadQRCode()">
+    <fa-icon icon="download"></fa-icon>
+    Save
+  </button>
 </div>
