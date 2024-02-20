@@ -87,28 +87,18 @@ export class QrcodesComponent {
   private generateKonva(url: string) {
     const stage = new Konva.Stage({
       container: 'konva-container',
-      width: 500,
-      height: 800
+      width: 400,
+      height: 400
     });
 
     const layer = new Konva.Layer();
 
     const rect = new Konva.Rect({
       stroke: 'black',
-      fill: 'blue',
-      height: 800,
-      width: 500
-    });
-
-    const headerText = new Konva.Text({
-      y: 60,
-      text: 'Please find the relevant documents at\n',
-      fontSize: 16,
-      width: 500,
-      fill: 'black',
-      stroke: 'white',
-      fontFamily: 'Calibri',
-      align: 'center'
+      strokeWidth: 2,
+      height: 400,
+      width: 400,
+      cornerRadius: 30
     });
 
     const cv = document.createElement('canvas');
@@ -121,12 +111,11 @@ export class QrcodesComponent {
       image: cv,
       width: 300,
       height: 300,
-      y: 100,
-      x: 20
+      y: 50,
+      x: 50
     });
 
     layer.add(rect);
-    layer.add(headerText);
     layer.add(img);
     stage.add(layer);
   }
