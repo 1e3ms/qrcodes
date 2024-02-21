@@ -2,9 +2,9 @@
   "name": "1e3ms-qrcodes",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Joao Eduardo Luis <joao@1e3ms.io>",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "LGPL-3.0-or-later",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
