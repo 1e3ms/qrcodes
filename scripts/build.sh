@@ -1,6 +1,8 @@
 #!/bin/bash
 
-IMG_PREFIX="io.1e3ms.qrcodes"
+REGISTRY="ghcr.io"
+IMG_NAME="1e3ms/io.1e3ms.qrcodes"
+IMG_PREFIX="${REGISTRY}/${IMG_NAME}"
 
 scripts_path=$(dirname "$(realpath "$0")")
 base_path=$(realpath "${scripts_path}"/..)
