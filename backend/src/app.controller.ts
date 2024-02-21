@@ -1,3 +1,10 @@
+/* Copyright (C) 2024  Joao Eduardo Luis <joao@1e3ms.io>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ */
 import { Body, Controller, Logger, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { catchError, firstValueFrom, map, of } from 'rxjs';
